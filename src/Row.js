@@ -1,9 +1,9 @@
 import Box from './Box';
 
-const Row = () => {
+const Row = ({ player, computer }) => {
   return (
     <div className="row">
-      <Box />
+      <Box player={player} computer={computer} />
       <Box />
       <Box />
     </div>
