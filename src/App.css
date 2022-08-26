@@ -1,7 +1,8 @@
 .App {
   background-color: rgb(246, 246, 42);
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .board {
@@ -21,4 +22,22 @@
   border: black 2px solid;
   height: 100px;
   width: 100px;
+}
+
+.instructions {
+  margin-bottom: 20px;
+}
+
+.choice {
+  display: flex;
+  justify-content: center;
+}
+
+button,
+h4 {
+  height: 20px;
+}
+
+h4 {
+  margin: 0;
 }
