@@ -10,8 +10,8 @@ function App() {
 
   return (
     <div className="App">
-      <Board player={player} computer={computer} />
-      <Instructions player={player} computer={computer} />
+      <Board player={player} setPlayer={setPlayer} computer={computer} setComputer={setComputer} />
+      <Instructions player={player} setPlayer={setPlayer} computer={computer} setComputer={setComputer} />
     </div>
   );
 }

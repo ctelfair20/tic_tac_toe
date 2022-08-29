@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import Row from './Row';
 
 const Board = ({ player, computer }) => {
