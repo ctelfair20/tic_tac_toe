@@ -20,8 +20,13 @@
 .box {
   background-color: green;
   border: black 2px solid;
+  text-align: center;
   height: 100px;
   width: 100px;
+}
+
+.filled {
+  font-size: 90px;
 }
 
 .instructions {

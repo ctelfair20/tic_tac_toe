@@ -4,12 +4,14 @@ const Box = ({ player, computer }) => {
 
   const [filled, setFilled] = useState('')
 
-  const handleClick = () => {
-
+  const handleClick = (e) => {
+    setFilled(player.char);
   }
 
   return (
-    <div className="box" onClick={handleClick}>{filled}</div>
+    <div className="box" onClick={handleClick}>
+      <span className="filled">{filled}</span>
+    </div>
   );
 }
 
