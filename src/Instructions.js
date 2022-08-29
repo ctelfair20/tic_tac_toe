@@ -13,13 +13,7 @@ const Instructions = ({ player, setPlayer, computer, setComputer }) => {
     }
   }
 
-  if (player.char) {
-    return (
-      <div className="instructions">
-        <h2>It's Your Turn</h2>
-      </div>
-    );
-  } else {
+  if (!player.char) {
     return (
       <div className="instructions">
         <h2>Which Player Are You?</h2>
@@ -28,6 +22,18 @@ const Instructions = ({ player, setPlayer, computer, setComputer }) => {
           <h4>or</h4>
           <button onClick={handleClick} value="O">O</button>
         </div>
+      </div>
+    );
+  } else if (player.isTurn) {
+    return (
+      <div className="instructions">
+        <h2>It's Your Turn</h2>
+      </div>
+    );
+  } else {
+    return (
+      <div className="instructions">
+        <h2>It's the Computer's Turn</h2>
       </div>
     );
   }
