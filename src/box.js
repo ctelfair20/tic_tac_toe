@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
-const Box = ({ player, computer }) => {
-
-  const [filled, setFilled] = useState('')
+const Box = ({ player, computer, setPlayer }) => {
+  const [filled, setFilled] = useState('');
+  const [isFilled, setIsFilled] = useState(false);
 
   const handleClick = (e) => {
     setFilled(player.char);
+    setIsFilled(true);
+    setPlayer({ ...player, isTurn: !player.isTurn })
   }
 
   return (

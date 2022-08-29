@@ -5,7 +5,7 @@ import Instructions from './Instructions';
 
 function App() {
   const [board, setBoard] = useState([]);
-  const [player, setPlayer] = useState({ char: null });
+  const [player, setPlayer] = useState({ char: null, isTurn: false });
   const [computer, setComputer] = useState({ char: null });
 
   return (
