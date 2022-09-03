@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 const Box = ({ id, player, computer, setPlayer, board, setBoard }) => {
-  const [filled, setFilled] = useState('');
-  const [isFilled, setIsFilled] = useState(false);
+  // const [filled, setFilled] = useState('');
+  // const [isFilled, setIsFilled] = useState(false);
 
   // const updateBoard = (id) => {
   //   setBoard({ ...board, [id]: player.char });
@@ -40,6 +40,7 @@ const Box = ({ id, player, computer, setPlayer, board, setBoard }) => {
     setBoard({ ...board, [id]: player.char });
     // lets the computer know when to take its turn
     setPlayer({ ...player, isTurn: !player.isTurn });
+    ///////////////////////think about using useEffect to tell the computer to take its turn//////////
     // compTakesTrun();
   }
 
