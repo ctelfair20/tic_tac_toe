@@ -22,17 +22,17 @@ const Box = ({ id, player, computer, setPlayer, board, setBoard }) => {
       }
     });
     console.log('options', emptyBoxesIds);
-    // // have comp choose a random box
-    // // use the length of the array and math.random to find one empty box
-    // const randomBox = Math.floor(Math.random() * emptyBoxesIds.length).toString();
-    // console.log('num', randomBox);
-    // // fill that box with the comps character
-    // setBoard({ ...board, [randomBox]: computer.char })
-    // // update fill var with comps character
-    // // update board with this box
-    // // update player turn to be true
-    // setPlayer({ ...player, isTurn: true })
-    // console.log('comp turn complete!');
+    // have comp choose a random box
+    // use the length of the array and math.random to find one empty box
+    const randomBox = Math.floor(Math.random() * emptyBoxesIds.length).toString();
+    console.log('num', randomBox);
+    // fill that box with the comps character
+    setBoard({ ...board, [randomBox]: computer.char })
+    // update fill var with comps character
+    // update board with this box
+    // update player turn to be true
+    setPlayer({ ...player, isTurn: true })
+    console.log('comp turn complete!');
   }
 
   const handleClick = (e) => {
