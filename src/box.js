@@ -1,40 +1,46 @@
 import { useState, useEffect } from 'react';
 
 const Box = ({ id, player, computer, setPlayer, board, setBoard }) => {
+  const [options, setOptions] = useState([])
   // const [filled, setFilled] = useState('');
   // const [isFilled, setIsFilled] = useState(false);
 
   useEffect(() => {
-    console.log("effects!!")
-    console.log("board", board)
-  }, [board])
-
-
-  const compTakesTrun = () => {
-    console.log('comp turn start!');
+    console.log("effects!!");
     // create an array to hold the empty boxes
     let emptyBoxesIds = [];
-    console.log('board', board);
     // iterate over the board state
-    Object.keys(board).map((boxId) => {
+    Object.keys(board).forEach((boxId) => {
       // if box is empty
       if (board[boxId] === '') {
         // push box to array
         emptyBoxesIds.push(boxId);
+      } else {
+        console.log("box id: ", boxId);
       }
     });
-    console.log('options', emptyBoxesIds);
+    // setOptions(emptyBoxesIds);
+    // console.log(options);
+    const randomBoxId = Math.floor(Math.random() * emptyBoxesIds.length).toString();
+    const randomBox = emptyBoxesIds[randomBoxId];
+    setBoard({ ...board, [randomBox]: computer.char })
+    setPlayer({ ...player, isTurn: true })
+  }, []);
+
+  const compTakesTrun = () => {
+    console.log('comp turn start!', options);
     // have comp choose a random box
     // use the length of the array and math.random to find one empty box
-    const randomBox = Math.floor(Math.random() * emptyBoxesIds.length).toString();
+    const randomBox = Math.floor(Math.random() * options.length).toString();
     console.log('num', randomBox);
     // fill that box with the comps character
-    setBoard({ ...board, [randomBox]: computer.char })
+    // setBoard({ ...board, [randomBox]: computer.char })
+    // console.log('boardC', board);
     // // update fill var with comps character
     // // update board with this box
-    // update player turn to be true
-    setPlayer({ ...player, isTurn: true })
-    console.log('comp turn complete!');
+    // // update player turn to be true
+    // setPlayer({ ...player, isTurn: true })
+    // console.log('comp turn complete!');
   }
 
   const handleClick = (e) => {
@@ -43,7 +49,7 @@ const Box = ({ id, player, computer, setPlayer, board, setBoard }) => {
     // lets the computer know when to take its turn
     setPlayer({ ...player, isTurn: !player.isTurn });
     ///////////////////////think about using useEffect to tell the computer to take its turn//////////
-    setTimeout(compTakesTrun(), 1000)
+    console.log(`my options: ${options}`);
   }
 
   return (
