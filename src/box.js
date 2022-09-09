@@ -1,31 +1,30 @@
 import { useState, useEffect } from 'react';
 
 const Box = ({ id, player, computer, setPlayer, board, setBoard }) => {
-  const [options, setOptions] = useState([])
+  const [options, setOptions] = useState([]);
   // const [filled, setFilled] = useState('');
   // const [isFilled, setIsFilled] = useState(false);
 
   useEffect(() => {
-    console.log("effects!!");
-    // create an array to hold the empty boxes
-    let emptyBoxesIds = [];
-    // iterate over the board state
-    Object.keys(board).forEach((boxId) => {
-      // if box is empty
-      if (board[boxId] === '') {
-        // push box to array
-        emptyBoxesIds.push(boxId);
-      } else {
-        console.log("box id: ", boxId);
-      }
-    });
-    // setOptions(emptyBoxesIds);
-    // console.log(options);
-    const randomBoxId = Math.floor(Math.random() * emptyBoxesIds.length).toString();
-    const randomBox = emptyBoxesIds[randomBoxId];
-    setBoard({ ...board, [randomBox]: computer.char })
-    setPlayer({ ...player, isTurn: true })
-  }, []);
+    if (!player.isTurn) {
+      console.log("effects!!");
+      // create an array to hold the empty boxes
+      let emptyBoxesIds = [];
+      // iterate over the board state
+      Object.keys(board).forEach((boxId) => {
+        // if box is empty
+        if (board[boxId] === '') {
+          // push box to array
+          emptyBoxesIds.push(boxId);
+        }
+      });
+      setOptions(emptyBoxesIds);
+      const randomBoxId = Math.floor(Math.random() * emptyBoxesIds.length).toString();
+      const randomBox = emptyBoxesIds[randomBoxId];
+      setBoard({ ...board, [randomBox]: computer.char })
+      setPlayer({ ...player, isTurn: true })
+    }
+  }, [board]);
 
   const compTakesTrun = () => {
     console.log('comp turn start!', options);
@@ -49,7 +48,7 @@ const Box = ({ id, player, computer, setPlayer, board, setBoard }) => {
     // lets the computer know when to take its turn
     setPlayer({ ...player, isTurn: !player.isTurn });
     ///////////////////////think about using useEffect to tell the computer to take its turn//////////
-    console.log(`my options: ${options}`);
+    compTakesTrun();
   }
 
   return (
