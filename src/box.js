@@ -1,10 +1,15 @@
 const Box = ({ id, player, computer, setPlayer, board, setBoard }) => {
 
   const handleClick = (e) => {
-    // ensure the state of the board is up-to-date
-    setBoard({ ...board, [id]: player.char });
-    // lets the computer know when to take its turn
-    setPlayer({ ...player, isTurn: !player.isTurn });
+    // check if it is the player's trun
+    if (player.isTurn && player.char != null) {
+      // ensure the state of the board is up-to-date
+      setBoard({ ...board, [id]: player.char });
+      // lets the computer know when to take its turn
+      setPlayer({ ...player, isTurn: !player.isTurn });
+    } else {
+      console.log("not your turn");
+    }
   }
 
   return (
