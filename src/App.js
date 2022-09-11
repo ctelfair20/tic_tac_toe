@@ -4,14 +4,15 @@ import Board from './Board';
 import Instructions from './Instructions';
 
 function App() {
-  const [board, setBoard] = useState([]);
   const [player, setPlayer] = useState({ char: null, isTurn: true });
   const [computer, setComputer] = useState({ char: null });
+  const [winner, setWinner] = useState(null);
+  const [isOver, setIsOver] = useState(false);
 
   return (
     <div className="App">
-      <Board player={player} setPlayer={setPlayer} computer={computer} setComputer={setComputer} />
-      <Instructions player={player} setPlayer={setPlayer} computer={computer} setComputer={setComputer} />
+      <Board player={player} setPlayer={setPlayer} computer={computer} setComputer={setComputer} setWinner={setWinner} setIsOver={setIsOver} />
+      <Instructions player={player} setPlayer={setPlayer} computer={computer} setComputer={setComputer} winner={winner} isOver={isOver} />
     </div>
   );
 }

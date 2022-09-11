@@ -1,4 +1,4 @@
-const Instructions = ({ player, setPlayer, computer, setComputer }) => {
+const Instructions = ({ player, setPlayer, computer, setComputer, winner, isOver }) => {
 
   const handleClick = (e) => {
     const newPlayerChar = { ...player, char: e.target.value };
@@ -13,7 +13,7 @@ const Instructions = ({ player, setPlayer, computer, setComputer }) => {
     }
   }
 
-  if (!player.char) {
+  if (!player.char && !isOver) {
     return (
       <div className="instructions">
         <h2>Which Player Are You?</h2>
@@ -30,10 +30,21 @@ const Instructions = ({ player, setPlayer, computer, setComputer }) => {
         <h2>It's Your Turn</h2>
       </div>
     );
-  } else {
+  } else if (player.isTurn === false) {
     return (
       <div className="instructions">
         <h2>It's the Computer's Turn</h2>
+      </div>
+    );
+  } else {
+    return (
+      <div className="instructions">
+        <h2>{winner}</h2>
+        <button onClick={() => {
+          console.log("Let's Play Again!")
+        }}
+        >Play Again?
+        </button>
       </div>
     );
   }
