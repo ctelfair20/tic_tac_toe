@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Box from './Box';
 
-const Board = ({ player, computer, setPlayer, setWinner, setIsOver }) => {
+const Board = ({ player, computer, setPlayer, setWinner, setIsOver, isOver }) => {
   const [board, setBoard] = useState({ 0: '', 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '' });
   const [game, setGame] = useState({
     winnerOptions: [
@@ -38,14 +38,9 @@ const Board = ({ player, computer, setPlayer, setWinner, setIsOver }) => {
         setPlayer({ ...player, isTurn: !player.isTurn })
       }
     }, 1000);
-    // if emptyBoxesIds is empty, there are no more moves to make
-    // if (options.length === 0 && Object.keys(board).every(box => board[box] !== '')) {
-    //   console.log("draw!", options);
-    // } else {
-    //   console.log('not done', options);
-    // }
 
     // if game.isOver is false
+
     // create winner variable --- call to whowon
     // if winner is a string
 

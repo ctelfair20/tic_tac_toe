@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <Board player={player} setPlayer={setPlayer} computer={computer} setComputer={setComputer} setWinner={setWinner} setIsOver={setIsOver} />
+      <Board player={player} setPlayer={setPlayer} computer={computer} setComputer={setComputer} setWinner={setWinner} setIsOver={setIsOver} isOver={isOver} />
       <Instructions player={player} setPlayer={setPlayer} computer={computer} setComputer={setComputer} winner={winner} isOver={isOver} />
     </div>
   );
