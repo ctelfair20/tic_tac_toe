@@ -1,9 +1,18 @@
 import { useState, useEffect } from 'react';
 import Box from './Box';
 
-const Board = ({ player, computer, setPlayer }) => {
+const Board = ({ player, computer, setPlayer, setWinner, setIsOver }) => {
   const [board, setBoard] = useState({ 0: '', 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '' });
-  const [options, setOptions] = useState([])
+  const [game, setGame] = useState({
+    winnerOptions: [
+      //rows
+      { 0: '', 1: '', 2: '' }, { 3: '', 4: '', 5: '' }, { 6: '', 7: '', 8: '' },
+      // columns
+      { 0: '', 3: '', 6: '' }, { 1: '', 4: '', 7: '' }, { 2: '', 5: '', 8: '' },
+      //diag
+      { 0: '', 4: '', 8: '' }, { 2: '', 4: '', 6: '' }
+    ],
+  });
 
   useEffect(() => {
     //stateful variables don't work inside of the setTimeout
@@ -21,8 +30,6 @@ const Board = ({ player, computer, setPlayer }) => {
             emptyBoxesIds.push(boxId);
           }
         });
-        // update possible comp options in state. Ex: options = [2, 3, 5, 8]
-        setOptions(emptyBoxesIds);
         // randomly select an option index. Ex: option indices = 0 - 3
         const randomBoxId = Math.floor(Math.random() * emptyBoxesIds.length);
         // select the box to be chosen by the comp by accessing the options array at the random option index
@@ -37,11 +44,52 @@ const Board = ({ player, computer, setPlayer }) => {
     // } else {
     //   console.log('not done', options);
     // }
+
+    // if game.isOver is false
+    // create winner variable --- call to whowon
+    // if winner is a string
+
+    //
   }, [board]);
 
-  const gameOver = () => {
+  const whoWon = () => {
     // is there a winner?
-    // maybe use a switch case to decide if there is three in a row
+    // counter for O
+    // counter for X
+    // counter for spaces --- true or false
+    // iterate over game.winnerOptions - look at each option
+    // iterate over all the values
+    // if value is an O
+    // increment O
+    // if value is an X
+    // increment X
+    // if value is a space
+    // set space to true
+    //
+    // end inner loop
+    // if there are 3 O
+    // figure out who is O
+    // change player.char to null --- prevent more turns by the player
+    // change player.isTurn to null
+    // change game.isOver to true  --- prevent the useEffect from running again
+    // set winner to "_____ winners!"
+    // return true
+    // if there are 3 x
+    // figure out who is X
+    // change player.char to null --- prevent more turns by the player
+    // change player.isTurn to null
+    // change game.isOver to true
+    // set winner to "_____ winners!"
+    // return true
+    //
+    // end outter loop
+    // check if all boxes are fill ---- its a draw
+    // change game.isOver to true
+    // change player.char to null --- prevent more turns by the player
+    // return "Its a draw!"
+    // else
+    // return false
+    //
   }
 
   const mapBoxes = (array) => {
